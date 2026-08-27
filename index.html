@@ -1,0 +1,5278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bank Bridge India</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#222;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+}
+
+.page.active{
+    display:block;
+}
+
+.container{
+    width:92%;
+    max-width:1150px;
+    margin:auto;
+    padding:35px 0 70px;
+}
+
+h1{
+    text-align:center;
+    color:#12366f;
+    margin-bottom:12px;
+}
+
+h2,h3{
+    color:#12366f;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:28px;
+}
+
+button{
+    cursor:pointer;
+    border:0;
+    border-radius:7px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+    opacity:.94;
+}
+
+.btn{
+    background:#12366f;
+    color:white;
+    padding:12px 22px;
+}
+
+.orange{
+    background:#ff7900;
+    color:white;
+    padding:12px 22px;
+}
+
+.green{
+    background:#16833b;
+    color:white;
+    padding:12px 22px;
+}
+
+.red{
+    background:#d60000;
+    color:white;
+    padding:12px 22px;
+}
+
+.back{
+    background:#555;
+    color:white;
+    padding:9px 18px;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card,
+.box,
+.bank-card{
+    background:white;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.card{
+    text-align:center;
+}
+
+.card h2,
+.card h3{
+    margin:12px 0;
+}
+
+.card p{
+    color:#666;
+    line-height:1.5;
+    margin-bottom:16px;
+}
+
+.icon{
+    font-size:48px;
+}
+
+select,
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccd3dd;
+    border-radius:7px;
+    font-size:15px;
+    background:white;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    color:#12366f;
+    margin-bottom:7px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-area{
+    background:white;
+    padding:20px 15px;
+    text-align:center;
+}
+
+.logo-image{
+    display:block;
+    width:320px;
+    max-width:90%;
+    height:auto;
+    max-height:180px;
+    object-fit:contain;
+    margin:auto;
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+.hero{
+    text-align:center;
+    background:white;
+    padding:15px 20px 60px;
+}
+
+.hero h1{
+    font-size:36px;
+    margin-top:25px;
+}
+
+.hero p{
+    max-width:800px;
+    margin:15px auto;
+    color:#555;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.hero-button{
+    background:#ff7900;
+    color:white;
+    padding:15px 40px;
+    font-size:18px;
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+.security-box{
+    background:#fff7e8;
+    border-left:5px solid #ff7900;
+    padding:18px;
+    border-radius:8px;
+    margin-bottom:25px;
+    line-height:1.6;
+    color:#555;
+}
+
+
+/* =========================================================
+   NET BANKING
+========================================================= */
+
+.net-card{
+    text-align:center;
+}
+
+.net-card .official-url{
+    color:#16833b;
+    font-size:13px;
+    word-break:break-all;
+    margin:10px 0 15px;
+}
+
+.contact{
+    text-align:left;
+    margin-top:16px;
+    padding-top:15px;
+    border-top:1px solid #e4e8ef;
+    color:#555;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.contact strong{
+    color:#12366f;
+}
+
+
+/* =========================================================
+   RATES
+========================================================= */
+
+.rate-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+.rate-table th,
+.rate-table td{
+    padding:14px;
+    border-bottom:1px solid #e5e9f0;
+    text-align:left;
+}
+
+.rate-table th{
+    background:#12366f;
+    color:white;
+}
+
+.preferred{
+    background:#e9f8ef;
+}
+
+.badge{
+    background:#16833b;
+    color:white;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.rate-note{
+    background:#eef5ff;
+    border-left:5px solid #12366f;
+    padding:18px;
+    border-radius:7px;
+    margin-bottom:20px;
+}
+
+
+/* =========================================================
+   ELIGIBILITY
+========================================================= */
+
+.criteria-box{
+    margin-top:25px;
+}
+
+.criteria-list{
+    padding-left:22px;
+}
+
+.criteria-list li{
+    margin-bottom:10px;
+    color:#555;
+    line-height:1.5;
+}
+
+.criteria-title{
+    color:#12366f;
+    margin-bottom:15px;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+.result-box{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+}
+
+.score{
+    color:#16833b;
+    font-size:52px;
+    font-weight:900;
+    margin:20px;
+}
+
+.result-details{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(190px,1fr));
+    gap:15px;
+    margin-top:25px;
+}
+
+.result-item{
+    background:#f4f7fb;
+    padding:17px;
+    border-radius:10px;
+}
+
+.result-item span{
+    display:block;
+    color:#777;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.result-item strong{
+    color:#12366f;
+}
+
+
+/* =========================================================
+   APPLY
+========================================================= */
+
+.apply-box{
+    max-width:850px;
+    margin:25px auto;
+    background:#d60000;
+    color:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(214,0,0,.2);
+}
+
+.apply-box h2{
+    color:white;
+}
+
+.apply-box p{
+    margin:10px 0 18px;
+}
+
+.apply-button{
+    width:100%;
+    background:white;
+    color:#d60000;
+    padding:16px;
+    font-size:20px;
+}
+
+
+/* =========================================================
+   REPAYMENT
+========================================================= */
+
+.repayment-summary{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(190px,1fr));
+    gap:15px;
+}
+
+.repayment-item{
+    background:#f4f7fb;
+    padding:20px;
+    border-radius:10px;
+    border-left:5px solid #12366f;
+}
+
+.repayment-item span{
+    display:block;
+    color:#777;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+.repayment-item strong{
+    color:#12366f;
+    font-size:20px;
+}
+
+.date-box{
+    background:#eaf7ee;
+    border-left:5px solid #16833b;
+    padding:20px;
+    margin-top:20px;
+    border-radius:8px;
+}
+
+.schedule-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.schedule-table th,
+.schedule-table td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+
+.schedule-table th{
+    background:#12366f;
+    color:white;
+}
+
+
+/* =========================================================
+   APPLICATION
+========================================================= */
+
+.application-summary{
+    background:#f4f7fb;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:25px;
+    line-height:1.8;
+}
+
+.application-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.application-submit{
+    grid-column:1/-1;
+    background:#16833b;
+    color:white;
+    padding:16px;
+    font-size:18px;
+}
+
+.notice{
+    grid-column:1/-1;
+    background:#fff7e8;
+    border-left:5px solid #ff7900;
+    padding:18px;
+    border-radius:7px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   SUCCESS / THANK YOU
+========================================================= */
+
+.success-box{
+    max-width:750px;
+    margin:60px auto;
+    text-align:center;
+}
+
+.success-icon{
+    font-size:75px;
+    margin-bottom:15px;
+}
+
+.thank-you-title{
+    font-size:34px;
+    color:#16833b;
+    margin-bottom:15px;
+}
+
+.thank-you-message{
+    color:#555;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.reference{
+    background:#eef5ff;
+    padding:18px;
+    border-radius:10px;
+    margin:25px 0;
+    color:#12366f;
+    font-size:18px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .logo-image{
+        width:260px;
+        max-width:90%;
+        max-height:150px;
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .application-form,
+    .question-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full,
+    .application-submit,
+    .notice{
+        grid-column:1;
+    }
+
+    .info-row{
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .rate-table{
+        min-width:700px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================================================
+HOME
+========================================================= -->
+
+<section id="homePage" class="page active">
+
+<div class="logo-area">
+
+<img
+class="logo-image"
+src="https://res.cloudinary.com/dtz0urit6/image/upload/q_auto:best,f_jpg/cloudinary-tools-uploads/nu09xxy9wrhfwcfwb6cp"
+alt="Bank Bridge India Logo"
+>
+
+</div>
+
+
+<div class="hero">
+
+<h1>
+Welcome to Bank Bridge India
+</h1>
+
+<p>
+Find banks, compare loan interest rates,
+check loan eligibility, calculate repayment,
+access official Net Banking websites
+and apply for suitable loans.
+</p>
+
+<button
+class="hero-button"
+onclick="showPage('locationPage')">
+
+Get Started
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+LOCATION
+========================================================= -->
+
+<section id="locationPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('homePage')">
+
+← Back
+
+</button>
+
+<h1>
+Select Your Location
+</h1>
+
+<p class="subtitle">
+Select your Region, State and District.
+</p>
+
+
+<div class="box">
+
+<div class="form-group">
+
+<label>
+Region
+</label>
+
+<select
+id="region"
+onchange="loadStates()">
+
+<option value="">
+Select Region
+</option>
+
+<option value="South">
+South
+</option>
+
+<option value="North">
+North
+</option>
+
+<option value="East">
+East
+</option>
+
+<option value="West">
+West
+</option>
+
+<option value="Central">
+Central
+</option>
+
+<option value="Northeast">
+Northeast
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+State / Union Territory
+</label>
+
+<select
+id="state"
+onchange="loadDistricts()">
+
+<option value="">
+Select State / UT
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+District
+</label>
+
+<select id="district">
+
+<option value="">
+Select District
+</option>
+
+</select>
+
+</div>
+
+
+<button
+class="orange"
+style="width:100%"
+onclick="findBanks()">
+
+Find Banks
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+CATEGORY
+========================================================= -->
+
+<section id="categoryPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('locationPage')">
+
+← Change Location
+
+</button>
+
+<h1>
+Select Bank Category
+</h1>
+
+<p
+class="subtitle"
+id="locationText">
+</p>
+
+
+<div class="grid">
+
+<div class="card">
+
+<div class="icon">
+🏦
+</div>
+
+<h2>
+Public Sector Banks
+</h2>
+
+<p>
+Explore major public sector banks.
+</p>
+
+<button
+class="btn"
+onclick="listBanks('public')">
+
+View Banks
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🏛️
+</div>
+
+<h2>
+Private Banks
+</h2>
+
+<p>
+Explore major private sector banks.
+</p>
+
+<button
+class="btn"
+onclick="listBanks('private')">
+
+View Banks
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🌾
+</div>
+
+<h2>
+Regional Rural Banks
+</h2>
+
+<p>
+Explore rural banking options.
+</p>
+
+<button
+class="btn"
+onclick="listBanks('rrb')">
+
+View Banks
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+BANK LIST
+========================================================= -->
+
+<section id="bankListPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('categoryPage')">
+
+← Back
+
+</button>
+
+<h1 id="bankTitle">
+Banks
+</h1>
+
+<p
+class="subtitle"
+id="bankLocation">
+</p>
+
+<div
+id="bankGrid"
+class="grid">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+SERVICES
+========================================================= -->
+
+<section id="servicesPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('bankListPage')">
+
+← Back
+
+</button>
+
+<h1 id="serviceTitle">
+Bank Services
+</h1>
+
+
+<div class="grid">
+
+<div class="card">
+
+<div class="icon">
+💰
+</div>
+
+<h2>
+Open Loan
+</h2>
+
+<p>
+Compare loan options and interest rates.
+</p>
+
+<button
+class="btn"
+onclick="openLoans()">
+
+Open Loan
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+💻
+</div>
+
+<h2>
+Net Banking
+</h2>
+
+<p>
+Visit official bank websites securely.
+</p>
+
+<button
+class="btn"
+onclick="openNetBanking()">
+
+Open Net Banking
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+ℹ️
+</div>
+
+<h2>
+Bank Information
+</h2>
+
+<p>
+View official bank information.
+</p>
+
+<button
+class="btn"
+onclick="showBankInfo()">
+
+View Information
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+NET BANKING
+========================================================= -->
+
+<section id="netBankingPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('servicesPage')">
+
+← Back to Bank Services
+
+</button>
+
+<h1>
+Official Net Banking
+</h1>
+
+<p class="subtitle">
+Choose a bank to open its official website.
+</p>
+
+
+<div class="security-box">
+
+<strong>
+🔒 Important Security Notice
+</strong>
+
+<br><br>
+
+Bank Bridge India does not collect your
+Net Banking password, PIN, card PIN or OTP.
+
+When you click a bank below, you are taken
+to the bank's official website.
+
+Only enter confidential banking information
+on the official bank website.
+
+</div>
+
+
+<div
+id="netBankingGrid"
+class="grid">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+BANK INFORMATION
+========================================================= -->
+
+<section id="bankInfoPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('servicesPage')">
+
+← Back
+
+</button>
+
+<h1>
+Bank Information
+</h1>
+
+<div
+id="bankInfoBox"
+class="box">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+LOANS
+========================================================= -->
+
+<section id="loanPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('servicesPage')">
+
+← Back
+
+</button>
+
+<h1>
+Loan Options
+</h1>
+
+<p class="subtitle">
+Choose a loan to compare bank interest rates.
+</p>
+
+
+<div
+id="loanGrid"
+class="grid">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+COMPARISON
+========================================================= -->
+
+<section id="comparisonPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('loanPage')">
+
+← Back
+
+</button>
+
+<h1 id="comparisonTitle">
+Interest Rate Comparison
+</h1>
+
+<div class="rate-note">
+
+<strong>
+⭐ Preference Rule
+</strong>
+
+<br><br>
+
+Banks are sorted from the lowest indicative
+interest rate to the highest.
+
+The lowest displayed rate is marked
+<strong>PREFERABLE</strong>.
+
+<br><br>
+
+Always verify the current rate and loan terms
+with the bank before making a financial decision.
+
+</div>
+
+
+<div
+class="box"
+style="overflow:auto">
+
+<table class="rate-table">
+
+<thead>
+
+<tr>
+
+<th>
+Rank
+</th>
+
+<th>
+Bank
+</th>
+
+<th>
+Annual Interest
+</th>
+
+<th>
+Preference
+</th>
+
+<th>
+Official Website
+</th>
+
+</tr>
+
+</thead>
+
+<tbody
+id="rateBody">
+</tbody>
+
+</table>
+
+</div>
+
+
+<br>
+
+<button
+class="orange"
+onclick="openEligibility()">
+
+Check Eligibility
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+ELIGIBILITY
+========================================================= -->
+
+<section id="eligibilityPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('comparisonPage')">
+
+← Back to Interest Rates
+
+</button>
+
+<h1>
+Loan Eligibility
+</h1>
+
+<p
+class="subtitle"
+id="eligibilitySubtitle">
+</p>
+
+
+<div class="box criteria-box">
+
+<h2 class="criteria-title">
+📋 Eligibility Criteria
+</h2>
+
+<ul
+id="criteriaList"
+class="criteria-list">
+</ul>
+
+</div>
+
+
+<br>
+
+
+<div class="box">
+
+<h2 style="margin-bottom:20px">
+Applicant Information
+</h2>
+
+<div
+id="eligibilityQuestions"
+class="question-grid">
+</div>
+
+</div>
+
+
+<br>
+
+
+<button
+class="green"
+style="width:100%"
+onclick="calculateEligibility()">
+
+Check Eligibility
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+RESULT
+========================================================= -->
+
+<section id="resultPage" class="page">
+
+<div class="container">
+
+<div class="result-box">
+
+<h1>
+Eligibility Result
+</h1>
+
+<div class="box">
+
+<h2 id="resultHeading">
+Preliminary Eligibility
+</h2>
+
+<div
+class="score"
+id="eligibilityScore">
+0%
+</div>
+
+<p id="resultMessage">
+</p>
+
+
+<div class="result-details">
+
+<div class="result-item">
+
+<span>
+Loan
+</span>
+
+<strong id="resultLoan">
+-
+</strong>
+
+</div>
+
+
+<div class="result-item">
+
+<span>
+Preferred Bank
+</span>
+
+<strong id="resultBank">
+-
+</strong>
+
+</div>
+
+
+<div class="result-item">
+
+<span>
+Interest Rate
+</span>
+
+<strong id="resultRate">
+-
+</strong>
+
+</div>
+
+
+<div class="result-item">
+
+<span>
+Maximum Amount
+</span>
+
+<strong id="resultMaximum">
+-
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="apply-box">
+
+<h2>
+Ready to Apply?
+</h2>
+
+<p>
+Continue to the loan application page.
+</p>
+
+<button
+class="apply-button"
+onclick="openApplication()">
+
+🔴 APPLY NOW
+
+</button>
+
+</div>
+
+
+<div style="text-align:center">
+
+<button
+class="btn"
+onclick="openRepayment()">
+
+Calculate Repayment
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+REPAYMENT
+========================================================= -->
+
+<section id="repaymentPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('resultPage')">
+
+← Back to Eligibility
+
+</button>
+
+<h1>
+Loan Repayment Calculator
+</h1>
+
+<p
+class="subtitle"
+id="repaymentSubtitle">
+</p>
+
+
+<div class="box">
+
+<div class="form-group">
+
+<label>
+Loan Amount Required
+</label>
+
+<input
+type="number"
+id="repaymentAmount"
+placeholder="Enter loan amount">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Loan Tenure
+</label>
+
+<select id="repaymentTenure">
+
+<option value="1">
+1 Year
+</option>
+
+<option value="2">
+2 Years
+</option>
+
+<option value="3">
+3 Years
+</option>
+
+<option value="5" selected>
+5 Years
+</option>
+
+<option value="7">
+7 Years
+</option>
+
+<option value="10">
+10 Years
+</option>
+
+<option value="15">
+15 Years
+</option>
+
+<option value="20">
+20 Years
+</option>
+
+<option value="25">
+25 Years
+</option>
+
+<option value="30">
+30 Years
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+First Payment Date
+</label>
+
+<input
+type="date"
+id="firstPaymentDate">
+
+</div>
+
+
+<button
+class="green"
+style="width:100%"
+onclick="calculateRepayment()">
+
+Calculate Repayment
+
+</button>
+
+</div>
+
+
+<br>
+
+
+<div
+id="repaymentResult"
+style="display:none">
+
+
+<div class="box">
+
+<h2 style="margin-bottom:20px">
+Repayment Summary
+</h2>
+
+
+<div class="repayment-summary">
+
+
+<div class="repayment-item">
+
+<span>
+Loan Amount
+</span>
+
+<strong id="summaryAmount">
+₹0
+</strong>
+
+</div>
+
+
+<div class="repayment-item">
+
+<span>
+Annual Interest
+</span>
+
+<strong id="summaryAnnualRate">
+0%
+</strong>
+
+</div>
+
+
+<div class="repayment-item">
+
+<span>
+Monthly Interest Rate
+</span>
+
+<strong id="summaryMonthlyRate">
+0%
+</strong>
+
+</div>
+
+
+<div class="repayment-item">
+
+<span>
+Monthly EMI
+</span>
+
+<strong id="summaryEMI">
+₹0
+</strong>
+
+</div>
+
+
+<div class="repayment-item">
+
+<span>
+Number of Payments
+</span>
+
+<strong id="summaryPayments">
+0
+</strong>
+
+</div>
+
+
+<div class="repayment-item">
+
+<span>
+Total Interest
+</span>
+
+<strong id="summaryInterest">
+₹0
+</strong>
+
+</div>
+
+
+<div class="repayment-item">
+
+<span>
+Total Amount Payable
+</span>
+
+<strong id="summaryTotal">
+₹0
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="date-box">
+
+<h3>
+📅 Payment Dates
+</h3>
+
+<br>
+
+<p>
+<strong>
+First Monthly Payment:
+</strong>
+
+<span id="summaryFirstDate">
+-
+</span>
+
+</p>
+
+<br>
+
+<p>
+<strong>
+Last Monthly Payment:
+</strong>
+
+<span id="summaryLastDate">
+-
+</span>
+
+</p>
+
+<br>
+
+<p>
+<strong>
+Payment Frequency:
+</strong>
+
+Monthly
+
+</p>
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<div class="box">
+
+<h2>
+Monthly Payment Schedule
+</h2>
+
+<div style="overflow:auto">
+
+<table class="schedule-table">
+
+<thead>
+
+<tr>
+
+<th>
+Payment No.
+</th>
+
+<th>
+Payment Date
+</th>
+
+<th>
+EMI
+</th>
+
+<th>
+Interest
+</th>
+
+<th>
+Principal
+</th>
+
+<th>
+Balance
+</th>
+
+</tr>
+
+</thead>
+
+<tbody
+id="scheduleBody">
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+APPLICATION
+========================================================= -->
+
+<section id="applicationPage" class="page">
+
+<div class="container">
+
+<button
+class="back"
+onclick="showPage('resultPage')">
+
+← Back to Eligibility Result
+
+</button>
+
+<h1>
+Loan Application
+</h1>
+
+<p class="subtitle">
+Complete your application details.
+</p>
+
+
+<div class="box">
+
+<div
+id="applicationSummary"
+class="application-summary">
+</div>
+
+
+<div class="application-form">
+
+
+<div>
+
+<label>
+Full Name
+</label>
+
+<input
+id="fullName"
+type="text"
+required
+placeholder="Enter full name">
+
+</div>
+
+
+<div>
+
+<label>
+Mobile Number
+</label>
+
+<input
+id="mobileNumber"
+type="tel"
+maxlength="10"
+required
+placeholder="10-digit mobile number">
+
+</div>
+
+
+<div>
+
+<label>
+Email Address
+</label>
+
+<input
+id="emailAddress"
+type="email"
+required
+placeholder="Email address">
+
+</div>
+
+
+<div>
+
+<label>
+Date of Birth
+</label>
+
+<input
+id="dob"
+type="date"
+required>
+
+</div>
+
+
+<div>
+
+<label>
+Occupation
+</label>
+
+<select id="occupation">
+
+<option>
+Student
+</option>
+
+<option>
+Salaried Employee
+</option>
+
+<option>
+Government Employee
+</option>
+
+<option>
+Business Owner
+</option>
+
+<option>
+Self Employed
+</option>
+
+<option>
+Farmer / Agriculturist
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Loan Amount Required
+</label>
+
+<input
+id="loanAmount"
+type="number"
+required
+placeholder="Amount in ₹">
+
+</div>
+
+
+<div>
+
+<label>
+Loan Tenure
+</label>
+
+<select id="loanTenure">
+
+<option>
+1 Year
+</option>
+
+<option>
+3 Years
+</option>
+
+<option>
+5 Years
+</option>
+
+<option>
+7 Years
+</option>
+
+<option>
+10 Years
+</option>
+
+<option>
+15 Years
+</option>
+
+<option>
+20 Years
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Loan Purpose
+</label>
+
+<select id="loanPurpose">
+
+<option>
+Education
+</option>
+
+<option>
+Home Purchase
+</option>
+
+<option>
+Business
+</option>
+
+<option>
+Agriculture
+</option>
+
+<option>
+Vehicle
+</option>
+
+<option>
+Medical
+</option>
+
+<option>
+Personal Requirement
+</option>
+
+</select>
+
+</div>
+
+
+<div class="full">
+
+<label>
+Address
+</label>
+
+<textarea
+id="address"
+placeholder="Enter your address">
+</textarea>
+
+</div>
+
+
+<div class="full">
+
+<label>
+State
+</label>
+
+<input
+id="applicationState"
+readonly>
+
+</div>
+
+
+<div class="full">
+
+<label>
+District
+</label>
+
+<input
+id="applicationDistrict"
+readonly>
+
+</div>
+
+
+<div class="notice">
+
+<strong>
+🔒 Security / Application Notice
+</strong>
+
+<br><br>
+
+This is a demonstration loan application.
+
+Bank Bridge India does not request or store
+Net Banking passwords, PINs or OTPs.
+
+Actual loan approval and application submission
+must take place through the bank's official
+process.
+
+</div>
+
+
+<div class="full">
+
+<label style="color:#555">
+
+<input
+type="checkbox"
+id="applicationAgreement"
+style="width:auto">
+
+I understand the above notice.
+
+</label>
+
+</div>
+
+
+<button
+class="application-submit"
+onclick="submitApplication()">
+
+🚀 SUBMIT LOAN APPLICATION
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+THANK YOU PAGE
+========================================================= -->
+
+<section id="successPage" class="page">
+
+<div class="container">
+
+<div class="box success-box">
+
+<div class="success-icon">
+✅
+</div>
+
+<h1 class="thank-you-title">
+Thank You!
+</h1>
+
+<h2>
+Thank You for Using Bank Bridge India
+</h2>
+
+<p class="thank-you-message">
+
+Your loan application has been successfully
+recorded for this demonstration.
+
+</p>
+
+
+<div class="reference">
+
+<strong>
+Application Reference
+</strong>
+
+<br><br>
+
+<span id="applicationReference">
+BBI-00000000
+</span>
+
+</div>
+
+
+<p class="thank-you-message">
+
+We appreciate you using
+<strong>Bank Bridge India</strong>.
+
+<br>
+
+Please verify all loan information,
+interest rates and eligibility directly
+with the respective bank before proceeding.
+
+</p>
+
+
+<br>
+
+
+<button
+class="btn"
+onclick="showPage('homePage')">
+
+🏠 Return to Home
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* =========================================================
+   ALL STATES AND DISTRICTS
+========================================================= */
+
+const states = {
+
+"South":[
+
+"Andhra Pradesh",
+"Karnataka",
+"Kerala",
+"Tamil Nadu",
+"Telangana",
+"Puducherry"
+
+],
+
+"North":[
+
+"Chandigarh",
+"Delhi",
+"Haryana",
+"Himachal Pradesh",
+"Jammu and Kashmir",
+"Ladakh",
+"Punjab",
+"Rajasthan",
+"Uttar Pradesh",
+"Uttarakhand"
+
+],
+
+"East":[
+
+"Bihar",
+"Jharkhand",
+"Odisha",
+"West Bengal"
+
+],
+
+"West":[
+
+"Goa",
+"Gujarat",
+"Maharashtra",
+"Dadra and Nagar Haveli and Daman and Diu"
+
+],
+
+"Central":[
+
+"Chhattisgarh",
+"Madhya Pradesh"
+
+],
+
+"Northeast":[
+
+"Arunachal Pradesh",
+"Assam",
+"Manipur",
+"Meghalaya",
+"Mizoram",
+"Nagaland",
+"Sikkim",
+"Tripura"
+
+]
+
+};
+
+
+const districts = {
+
+
+/* =========================
+ANDHRA PRADESH
+========================= */
+
+"Andhra Pradesh":[
+"Alluri Sitharama Raju",
+"Anakapalli",
+"Ananthapuramu",
+"Annamayya",
+"Bapatla",
+"Chittoor",
+"Dr. B. R. Ambedkar Konaseema",
+"East Godavari",
+"Eluru",
+"Guntur",
+"Kakinada",
+"Krishna",
+"Kurnool",
+"Nandyal",
+"NTR",
+"Palnadu",
+"Parvathipuram Manyam",
+"Prakasam",
+"Sri Potti Sriramulu Nellore",
+"Sri Sathya Sai",
+"Srikakulam",
+"Tirupati",
+"Visakhapatnam",
+"Vizianagaram",
+"West Godavari",
+"YSR Kadapa"
+],
+
+
+/* =========================
+ARUNACHAL PRADESH
+========================= */
+
+"Arunachal Pradesh":[
+"Anjaw",
+"Changlang",
+"East Kameng",
+"East Siang",
+"Itanagar Capital Complex",
+"Kamle",
+"Kra Daadi",
+"Kurung Kumey",
+"Lepa Rada",
+"Lohit",
+"Longding",
+"Lower Dibang Valley",
+"Lower Siang",
+"Lower Subansiri",
+"Namsai",
+"Pakke Kessang",
+"Papum Pare",
+"Shi Yomi",
+"Siang",
+"Tawang",
+"Tirap",
+"Upper Dibang Valley",
+"Upper Siang",
+"Upper Subansiri",
+"West Kameng",
+"West Siang"
+],
+
+
+/* =========================
+ASSAM
+========================= */
+
+"Assam":[
+"Baksa",
+"Barpeta",
+"Biswanath",
+"Bongaigaon",
+"Cachar",
+"Charaideo",
+"Chirang",
+"Darrang",
+"Dhemaji",
+"Dhubri",
+"Dibrugarh",
+"Dima Hasao",
+"Goalpara",
+"Golaghat",
+"Hailakandi",
+"Hojai",
+"Jorhat",
+"Kamrup",
+"Kamrup Metropolitan",
+"Karbi Anglong",
+"Karimganj",
+"Kokrajhar",
+"Lakhimpur",
+"Majuli",
+"Morigaon",
+"Nagaon",
+"Nalbari",
+"Sivasagar",
+"Sonitpur",
+"South Salmara-Mankachar",
+"Tamulpur",
+"Tinsukia",
+"Udalguri",
+"West Karbi Anglong"
+],
+
+
+/* =========================
+BIHAR
+========================= */
+
+"Bihar":[
+"Araria",
+"Arwal",
+"Aurangabad",
+"Banka",
+"Begusarai",
+"Bhagalpur",
+"Bhojpur",
+"Buxar",
+"Darbhanga",
+"East Champaran",
+"Gaya",
+"Gopalganj",
+"Jamui",
+"Jehanabad",
+"Kaimur",
+"Katihar",
+"Khagaria",
+"Kishanganj",
+"Lakhisarai",
+"Madhepura",
+"Madhubani",
+"Munger",
+"Muzaffarpur",
+"Narayanpur",
+"Nalanda",
+"Nawada",
+"Patna",
+"Purnia",
+"Rohtas",
+"Saharsa",
+"Samastipur",
+"Saran",
+"Sheikhpura",
+"Sheohar",
+"Sitamarhi",
+"Siwan",
+"Supaul",
+"Vaishali",
+"West Champaran"
+],
+
+
+/* =========================
+CHHATTISGARH
+========================= */
+
+"Chhattisgarh":[
+"Balod",
+"Baloda Bazar",
+"Balrampur-Ramanujganj",
+"Bastar",
+"Bemetara",
+"Bijapur",
+"Bilaspur",
+"Dantewada",
+"Dhamtari",
+"Durg",
+"Gariaband",
+"Gaurela-Pendra-Marwahi",
+"Janjgir-Champa",
+"Jashpur",
+"Kabirdham",
+"Kanker",
+"Kondagaon",
+"Korba",
+"Koriya",
+"Mahasamund",
+"Manendragarh-Chirmiri-Bharatpur",
+"Mohla-Manpur-Ambagarh Chowki",
+"Mungeli",
+"Narayanpur",
+"Raigarh",
+"Raipur",
+"Rajnandgaon",
+"Sakti",
+"Sarangarh-Bilaigarh",
+"Sukma",
+"Surajpur",
+"Surguja"
+],
+
+
+/* =========================
+GOA
+========================= */
+
+"Goa":[
+"North Goa",
+"South Goa"
+],
+
+
+/* =========================
+GUJARAT
+========================= */
+
+"Gujarat":[
+"Ahmedabad",
+"Amreli",
+"Anand",
+"Aravalli",
+"Banaskantha",
+"Bharuch",
+"Bhavnagar",
+"Botad",
+"Chhota Udaipur",
+"Dahod",
+"Devbhoomi Dwarka",
+"Gandhinagar",
+"Gir Somnath",
+"Jamnagar",
+"Junagadh",
+"Kheda",
+"Kutch",
+"Mahisagar",
+"Mehsana",
+"Morbi",
+"Narmada",
+"Navsari",
+"Panchmahal",
+"Porbandar",
+"Rajkot",
+"Sabarkantha",
+"Surat",
+"Surendranagar",
+"Tapi",
+"Vadodara",
+"Valsad"
+],
+
+
+/* =========================
+HARYANA
+========================= */
+
+"Haryana":[
+"Ambala",
+"Charkhi Dadri",
+"Faridabad",
+"Fatehabad",
+"Gurugram",
+"Hisar",
+"Jhajjar",
+"Jind",
+"Kaithal",
+"Karnal",
+"Kurukshetra",
+"Mahendragarh",
+"Nuh",
+"Palwal",
+"Panchkula",
+"Panipat",
+"Rewari",
+"Rohtak",
+"Sirsa",
+"Sonipat",
+"Yamunanagar"
+],
+
+
+/* =========================
+HIMACHAL PRADESH
+========================= */
+
+"Himachal Pradesh":[
+"Bilaspur",
+"Chamba",
+"Hamirpur",
+"Kangra",
+"Kinnaur",
+"Kullu",
+"Lahaul and Spiti",
+"Mandi",
+"Shimla",
+"Sirmaur",
+"Solan",
+"Una"
+],
+
+
+/* =========================
+JHARKHAND
+========================= */
+
+"Jharkhand":[
+"Bokaro",
+"Chatra",
+"Deoghar",
+"Dhanbad",
+"Dumka",
+"East Singhbhum",
+"Garhwa",
+"Giridih",
+"Godda",
+"Gumla",
+"Hazaribagh",
+"Jamtara",
+"Khunti",
+"Koderma",
+"Latehar",
+"Lohardaga",
+"Pakur",
+"Palamu",
+"Ramgarh",
+"Ranchi",
+"Sahibganj",
+"Seraikela Kharsawan",
+"Simdega",
+"West Singhbhum"
+],
+
+
+/* =========================
+KARNATAKA
+========================= */
+
+"Karnataka":[
+"Bagalkot",
+"Ballari",
+"Belagavi",
+"Bengaluru Rural",
+"Bengaluru Urban",
+"Bidar",
+"Chamarajanagar",
+"Chikkaballapur",
+"Chikkamagaluru",
+"Chitradurga",
+"Dakshina Kannada",
+"Davanagere",
+"Dharwad",
+"Gadag",
+"Kalaburagi",
+"Hassan",
+"Haveri",
+"Kodagu",
+"Kolar",
+"Koppal",
+"Mandya",
+"Mysuru",
+"Raichur",
+"Ramanagara",
+"Shivamogga",
+"Tumakuru",
+"Udupi",
+"Uttara Kannada",
+"Vijayapura",
+"Yadgir"
+],
+
+
+/* =========================
+KERALA
+========================= */
+
+"Kerala":[
+"Alappuzha",
+"Ernakulam",
+"Idukki",
+"Kannur",
+"Kasaragod",
+"Kollam",
+"Kottayam",
+"Kozhikode",
+"Malappuram",
+"Palakkad",
+"Pathanamthitta",
+"Thiruvananthapuram",
+"Thrissur",
+"Wayanad"
+],
+
+
+/* =========================
+MADHYA PRADESH
+========================= */
+
+"Madhya Pradesh":[
+"Agar Malwa",
+"Alirajpur",
+"Anuppur",
+"Ashoknagar",
+"Balaghat",
+"Barwani",
+"Betul",
+"Bhind",
+"Bhopal",
+"Burhanpur",
+"Chhatarpur",
+"Chhindwara",
+"Damoh",
+"Datia",
+"Dewas",
+"Dhar",
+"Dindori",
+"Guna",
+"Gwalior",
+"Harda",
+"Narmadapuram",
+"Indore",
+"Jabalpur",
+"Jhabua",
+"Katni",
+"Khandwa",
+"Khargone",
+"Maihar",
+"Mandla",
+"Mandsaur",
+"Mauganj",
+"Morena",
+"Narsinghpur",
+"Neemuch",
+"Niwari",
+"Panna",
+"Pandhurna",
+"Raisen",
+"Rajgarh",
+"Ratlam",
+"Rewa",
+"Sagar",
+"Satna",
+"Sehore",
+"Seoni",
+"Shahdol",
+"Shajapur",
+"Sheopur",
+"Shivpuri",
+"Sidhi",
+"Singrauli",
+"Tikamgarh",
+"Ujjain",
+"Umaria",
+"Vidisha"
+],
+
+
+/* =========================
+MAHARASHTRA
+========================= */
+
+"Maharashtra":[
+"Ahmednagar",
+"Akola",
+"Amravati",
+"Beed",
+"Bhandara",
+"Buldhana",
+"Chandrapur",
+"Chhatrapati Sambhajinagar",
+"Dhule",
+"Dharashiv",
+"Dhandoli",
+"Gadchiroli",
+"Gondia",
+"Hingoli",
+"Jalgaon",
+"Jalna",
+"Kolhapur",
+"Latur",
+"Mumbai City",
+"Mumbai Suburban",
+"Nagpur",
+"Nanded",
+"Nandurbar",
+"Nashik",
+"Palghar",
+"Parbhani",
+"Pune",
+"Raigad",
+"Ratnagiri",
+"Sangli",
+"Satara",
+"Sindhudurg",
+"Solapur",
+"Thane",
+"Wardha",
+"Washim",
+"Yavatmal"
+],
+
+
+/* =========================
+MANIPUR
+========================= */
+
+"Manipur":[
+"Bishnupur",
+"Chandel",
+"Churachandpur",
+"Imphal East",
+"Imphal West",
+"Jiribam",
+"Kakching",
+"Kamjong",
+"Kangpokpi",
+"Noney",
+"Pherzawl",
+"Senapati",
+"Tamenglong",
+"Thoubal",
+"Ukhrul"
+],
+
+
+/* =========================
+MEGHALAYA
+========================= */
+
+"Meghalaya":[
+"East Garo Hills",
+"East Jaintia Hills",
+"East Khasi Hills",
+"North Garo Hills",
+"Ri-Bhoi",
+"South Garo Hills",
+"South West Garo Hills",
+"South West Khasi Hills",
+"West Garo Hills",
+"West Jaintia Hills",
+"West Khasi Hills"
+],
+
+
+/* =========================
+MIZORAM
+========================= */
+
+"Mizoram":[
+"Aizawl",
+"Champhai",
+"Hnahthial",
+"Khawzawl",
+"Kolasib",
+"Lawngtlai",
+"Lunglei",
+"Mamit",
+"Saiha",
+"Saitual",
+"Serchhip"
+],
+
+
+/* =========================
+NAGALAND
+========================= */
+
+"Nagaland":[
+"Chumoukedima",
+"Dimapur",
+"Kiphire",
+"Kohima",
+"Longleng",
+"Mokokchung",
+"Mon",
+"Niuland",
+"Noklak",
+" Peren",
+"Phokhungchung",
+"Shamator",
+"Tuensang",
+"Wokha",
+"Zunheboto"
+],
+
+
+/* =========================
+ODISHA
+========================= */
+
+"Odisha":[
+"Angul",
+"Balangir",
+"Balasore",
+"Bargarh",
+"Bhadrak",
+"Boudh",
+"Cuttack",
+"Deogarh",
+"Dhenkanal",
+"Gajapati",
+"Ganjam",
+"Jagatsinghpur",
+"Jajpur",
+"Jharsuguda",
+"Kalahandi",
+"Kandhamal",
+"Kendrapara",
+"Kendujhar",
+"Khordha",
+"Koraput",
+"Malkangiri",
+"Mayurbhanj",
+"Nabarangpur",
+"Nayagarh",
+"Nuapada",
+"Puri",
+"Rayagada",
+"Sambalpur",
+"Subarnapur",
+"Sundargarh"
+],
+
+
+/* =========================
+PUNJAB
+========================= */
+
+"Punjab":[
+"Amritsar",
+"Barnala",
+"Bathinda",
+"Faridkot",
+"Fatehgarh Sahib",
+"Fazilka",
+"Ferozepur",
+"Gurdaspur",
+"Hoshiarpur",
+"Jalandhar",
+"Kapurthala",
+"Ludhiana",
+"Malerkotla",
+"Mansa",
+"Moga",
+"Muktsar",
+"Pathankot",
+"Patiala",
+"Rupnagar",
+"Sahibzada Ajit Singh Nagar",
+"Sangrur",
+"Shaheed Bhagat Singh Nagar",
+"Tarn Taran"
+],
+
+
+/* =========================
+RAJASTHAN
+========================= */
+
+"Rajasthan":[
+"Ajmer",
+"Alwar",
+"Anupgarh",
+"Balotra",
+"Banswara",
+"Baran",
+"Barmer",
+"Beawar",
+"Bharatpur",
+"Bhilwara",
+"Bikaner",
+"Bundi",
+"Chittorgarh",
+"Churu",
+"Dausa",
+"Deeg",
+"Dholpur",
+"DIDWANA-KUCHAMANG",
+"Dungarpur",
+"Hanumangarh",
+"Jaipur",
+"Jaipur Rural",
+"Jaisalmer",
+"Jalore",
+"Jhalawar",
+"Jhunjhunu",
+"Jodhpur",
+"Jodhpur Rural",
+"Karauli",
+"Kekri",
+"Khairthal-Tijara",
+"Kota",
+"Nagaur",
+"Neem Ka Thana",
+"Pali",
+"Phalodi",
+"Pratapgarh",
+"Rajsamand",
+"Salumbar",
+"Sawai Madhopur",
+"Sikar",
+"Sirohi",
+"Sri Ganganagar",
+"Shahpura",
+"Tonk",
+"Udaipur"
+],
+
+
+/* =========================
+SIKKIM
+========================= */
+
+"Sikkim":[
+"East Sikkim",
+"North Sikkim",
+"South Sikkim",
+"West Sikkim",
+"Pakyong",
+"Namchi",
+"Singhik"
+],
+
+
+/* =========================
+TAMIL NADU
+========================= */
+
+"Tamil Nadu":[
+"Ariyalur",
+"Chengalpattu",
+"Chennai",
+"Coimbatore",
+"Cuddalore",
+"Dharmapuri",
+"Dindigul",
+"Erode",
+"Kallakurichi",
+"Kancheepuram",
+"Karur",
+"Krishnagiri",
+"Madurai",
+"Mayiladuthurai",
+"Nagapattinam",
+"Namakkal",
+"Nilgiris",
+"Perambalur",
+"Pudukkottai",
+"Ramanathapuram",
+"Ranipet",
+"Salem",
+"Sivaganga",
+"Tenkasi",
+"Thanjavur",
+"Theni",
+"Thoothukudi",
+"Tiruchirappalli",
+"Tirunelveli",
+"Tirupathur",
+"Tiruppur",
+"Tiruvallur",
+"Tiruvarur",
+"Tiruvannamalai",
+"Vellore",
+"Viluppuram",
+"Virudhunagar"
+],
+
+
+/* =========================
+TELANGANA
+========================= */
+
+"Telangana":[
+"Adilabad",
+"Bhadradri Kothagudem",
+"Hanamkonda",
+"Hyderabad",
+"Jagtial",
+"Jangaon",
+"Jayashankar Bhupalpally",
+"Jogulamba Gadwal",
+"Kamareddy",
+"Karimnagar",
+"Khammam",
+"Komaram Bheem",
+"Mahabubabad",
+"Mahbubnagar",
+"Mancherial",
+"Medak",
+"Medchal-Malkajgiri",
+"Mulugu",
+"Nagarkurnool",
+"Nalgonda",
+"Narayanpet",
+"Nirmal",
+"Nizamabad",
+"Peddapalli",
+"Rajanna Sircilla",
+"Rangareddy",
+"Sangareddy",
+"Siddipet",
+"Suryapet",
+"Vikarabad",
+"Wanaparthy",
+"Warangal",
+"Yadadri Bhuvanagiri"
+],
+
+
+/* =========================
+TRIPURA
+========================= */
+
+"Tripura":[
+"Dhalai",
+"Gomati",
+"Khowai",
+"North Tripura",
+"Sepahijala",
+"South Tripura",
+"Unakoti",
+"West Tripura"
+],
+
+
+/* =========================
+UTTAR PRADESH
+========================= */
+
+"Uttar Pradesh":[
+"Agra",
+"Aligarh",
+"Ambedkar Nagar",
+"Amethi",
+"Amroha",
+"Auraiya",
+"Ayodhya",
+"Azamgarh",
+"Baghpat",
+"Bahraich",
+"Ballia",
+"Balrampur",
+"Banda",
+"Barabanki",
+"Bareilly",
+"Basti",
+"Bhadohi",
+"Bijnor",
+"Budaun",
+"Bulandshahr",
+"Chandauli",
+"Chitrakoot",
+"Deoria",
+"Etah",
+"Etawah",
+"Farrukhabad",
+"Fatehpur",
+"Firozabad",
+"Gautam Buddha Nagar",
+"Ghaziabad",
+"Ghazipur",
+"Gonda",
+"Gorakhpur",
+"Hamirpur",
+"Hapur",
+"Hardoi",
+"Hathras",
+"Jalaun",
+"Jaunpur",
+"Jhansi",
+"Kannauj",
+"Kanpur Dehat",
+"Kanpur Nagar",
+"Kasganj",
+"Kaushambi",
+"Kushinagar",
+"Lakhimpur Kheri",
+"Lalitpur",
+"Lucknow",
+"Maharajganj",
+"Mahoba",
+"Mainpuri",
+"Mathura",
+"Mau",
+"Meerut",
+"Mirzapur",
+"Moradabad",
+"Muzaffarnagar",
+"Pilibhit",
+"Pratapgarh",
+"Prayagraj",
+"Raebareli",
+"Rampur",
+"Saharanpur",
+"Sambhal",
+"Sant Kabir Nagar",
+"Shahjahanpur",
+"Shamli",
+"Shravasti",
+"Siddharthnagar",
+"Sitapur",
+"Sonbhadra",
+"Sultanpur",
+"Unnao",
+"Varanasi"
+],
+
+
+/* =========================
+UTTARAKHAND
+========================= */
+
+"Uttarakhand":[
+"Almora",
+"Bageshwar",
+"Chamoli",
+"Champawat",
+"Dehradun",
+"Haridwar",
+"Nainital",
+"Pauri Garhwal",
+"Pithoragarh",
+"Rudraprayag",
+"Tehri Garhwal",
+"Udham Singh Nagar",
+"Uttarkashi"
+],
+
+
+/* =========================
+WEST BENGAL
+========================= */
+
+"West Bengal":[
+"Alipurduar",
+"Bankura",
+"Paschim Bardhaman",
+"Purba Bardhaman",
+"Birbhum",
+"Cooch Behar",
+"Dakshin Dinajpur",
+"Darjeeling",
+"Hooghly",
+"Howrah",
+"Jalpaiguri",
+"Jhargram",
+"Kalimpong",
+"Kolkata",
+"Maldah",
+"Murshidabad",
+"Nadia",
+"North 24 Parganas",
+"South 24 Parganas",
+"Paschim Medinipur",
+"Purba Medinipur",
+"Uttar Dinajpur"
+],
+
+
+/* =========================
+UNION TERRITORIES
+========================= */
+
+"Delhi":[
+"Central Delhi",
+"East Delhi",
+"New Delhi",
+"North Delhi",
+"North East Delhi",
+"North West Delhi",
+"Shahdara",
+"South Delhi",
+"South East Delhi",
+"South West Delhi",
+"West Delhi"
+],
+
+"Chandigarh":[
+"Chandigarh"
+],
+
+"Ladakh":[
+"Leh",
+"Kargil"
+],
+
+"Puducherry":[
+"Puducherry",
+"Karaikal",
+"Mahe",
+"Yanam"
+],
+
+"Dadra and Nagar Haveli and Daman and Diu":[
+"Dadra and Nagar Haveli",
+"Daman",
+"Diu"
+],
+
+"Jammu and Kashmir":[
+"Anantnag",
+"Bandipora",
+"Baramulla",
+"Budgam",
+"Doda",
+"Ganderbal",
+"Jammu",
+"Kathua",
+"Kishtwar",
+"Kulgam",
+" Kupwara",
+"Pulwama",
+"Rajouri",
+"Ramban",
+"Reasi",
+"Samba",
+"Shopian",
+"Srinagar",
+"Udhampur"
+]
+
+};
+
+
+/* =========================================================
+   BANK DATA
+========================================================= */
+
+const banks=[
+
+{
+name:"State Bank of India",
+url:"https://sbi.co.in/",
+contact:"1800 1234 / 1800 2100",
+contactPage:"https://sbi.co.in/web/customer-care/contact-centre",
+rates:{
+Home:7.50,
+Personal:10.50,
+Education:7.00,
+Agriculture:8.00,
+Vehicle:8.70,
+Business:10.50,
+Gold:9.00
+}
+},
+
+{
+name:"Bank of Baroda",
+url:"https://bankofbaroda.bank.in/",
+contact:"Use official Contact Us page",
+contactPage:"https://bankofbaroda.bank.in/contact-us",
+rates:{
+Home:7.50,
+Personal:11.00,
+Education:8.00,
+Agriculture:8.00,
+Vehicle:9.00,
+Business:10.50,
+Gold:9.00
+}
+},
+
+{
+name:"Bank of India",
+url:"https://bankofindia.co.in/",
+contact:"Use official Contact Us page",
+contactPage:"https://bankofindia.co.in/contact-us",
+rates:{
+Home:7.50,
+Personal:11.00,
+Education:8.00,
+Agriculture:8.00,
+Vehicle:9.00,
+Business:10.50,
+Gold:9.00
+}
+},
+
+{
+name:"Bank of Maharashtra",
+url:"https://bankofmaharashtra.in/",
+contact:"Use official Contact Us page",
+contactPage:"https://bankofmaharashtra.in/",
+rates:{
+Home:7.50,
+Personal:10.50,
+Education:7.50,
+Agriculture:8.00,
+Vehicle:8.50,
+Business:10.00,
+Gold:9.00
+}
+},
+
+{
+name:"Canara Bank",
+url:"https://canarabank.com/",
+contact:"Use official Contact Us page",
+contactPage:"https://canarabank.com/",
+rates:{
+Home:7.50,
+Personal:10.50,
+Education:7.00,
+Agriculture:8.00,
+Vehicle:7.50,
+Business:9.00,
+Gold:9.00
+}
+},
+
+{
+name:"Central Bank of India",
+url:"https://www.centralbankofindia.co.in/",
+contact:"1800 3030",
+contactPage:"https://www.centralbankofindia.co.in/",
+rates:{
+Home:7.50,
+Personal:10.50,
+Education:8.00,
+Agriculture:8.00,
+Vehicle:8.50,
+Business:10.00,
+Gold:9.00
+}
+},
+
+{
+name:"Indian Bank",
+url:"https://www.indianbank.in/",
+contact:"Use official Contact Us page",
+contactPage:"https://www.indianbank.in/contact-us/",
+rates:{
+Home:7.50,
+Personal:11.00,
+Education:7.50,
+Agriculture:8.00,
+Vehicle:8.00,
+Business:9.50,
+Gold:8.50
+}
+},
+
+{
+name:"Indian Overseas Bank",
+url:"https://www.iob.bank.in/",
+contact:"1800 890 4445 / 1800 425 4445",
+contactPage:"https://www.iob.bank.in/",
+rates:{
+Home:7.50,
+Personal:10.50,
+Education:7.50,
+Agriculture:8.00,
+Vehicle:8.00,
+Business:9.50,
+Gold:9.00
+}
+},
+
+{
+name:"Punjab National Bank",
+url:"https://www.pnbindia.in/",
+contact:"1800 1800 / 1800 2021",
+contactPage:"https://www.pnbindia.in/contact-centre.html",
+rates:{
+Home:7.50,
+Personal:10.50,
+Education:8.00,
+Agriculture:8.00,
+Vehicle:8.00,
+Business:9.50,
+Gold:9.00
+}
+},
+
+{
+name:"Punjab & Sind Bank",
+url:"https://punjabandsindbank.co.in/",
+contact:"Use official Contact Us page",
+contactPage:"https://punjabandsindbank.co.in/",
+rates:{
+Home:7.50,
+Personal:10.50,
+Education:8.00,
+Agriculture:8.00,
+Vehicle:8.50,
+Business:10.00,
+Gold:9.00
+}
+},
+
+{
+name:"UCO Bank",
+url:"https://www.ucobank.com/",
+contact:"1800 8910",
+contactPage:"https://www.ucobank.com/",
+rates:{
+Home:7.50,
+Personal:10.50,
+Education:8.00,
+Agriculture:8.00,
+Vehicle:8.50,
+Business:10.00,
+Gold:9.00
+}
+},
+
+{
+name:"Union Bank of India",
+url:"https://www.unionbankofindia.co.in/",
+contact:"Use official Contact Us page",
+contactPage:"https://www.unionbankofindia.co.in/",
+rates:{
+Home:7.50,
+Personal:10.50,
+Education:8.00,
+Agriculture:8.00,
+Vehicle:8.00,
+Business:9.50,
+Gold:9.00
+}
+},
+
+{
+name:"ICICI Bank",
+url:"https://www.icici.bank.in/",
+contact:"Use official Contact Us page",
+contactPage:"https://www.icici.bank.in/",
+rates:{
+Home:8.50,
+Personal:10.50,
+Education:9.00,
+Agriculture:9.00,
+Vehicle:8.50,
+Business:11.00,
+Gold:9.50
+}
+},
+
+{
+name:"HDFC Bank",
+url:"https://www.hdfcbank.com/",
+contact:"Use official Contact Us page",
+contactPage:"https://www.hdfcbank.com/",
+rates:{
+Home:8.00,
+Personal:10.50,
+Education:9.00,
+Agriculture:9.00,
+Vehicle:8.50,
+Business:11.00,
+Gold:9.50
+}
+},
+
+{
+name:"Axis Bank",
+url:"https://www.axisbank.com/",
+contact:"Use official Contact Us page",
+contactPage:"https://www.axisbank.com/contact-us",
+rates:{
+Home:8.00,
+Personal:10.50,
+Education:9.00,
+Agriculture:9.00,
+Vehicle:8.50,
+Business:11.00,
+Gold:9.50
+}
+}
+
+];
+
+
+/* =========================================================
+   LOAN DATA
+========================================================= */
+
+const loans={
+
+Home:{
+icon:"🏠",
+maximum:10000000,
+criteria:[
+"Applicant should meet applicable age requirements.",
+"Stable income or repayment capacity is generally required.",
+"Property and ownership documents may be required.",
+"Identity and address verification may be required.",
+"Credit history may be considered.",
+"Final approval depends on bank verification."
+]
+},
+
+Personal:{
+icon:"👤",
+maximum:2500000,
+criteria:[
+"Applicant should meet applicable age requirements.",
+"Regular income may be required.",
+"Employment or income stability may be considered.",
+"Identity and address verification may be required.",
+"Credit history may be considered.",
+"Final approval is subject to bank assessment."
+]
+},
+
+Education:{
+icon:"🎓",
+maximum:3000000,
+criteria:[
+"Applicant should have admission or an eligible educational purpose.",
+"Recognised institution/course requirements may apply.",
+"Academic documents may be required.",
+"Identity and address verification may be required.",
+"Co-applicant information may be required in some cases.",
+"Final approval depends on the bank."
+]
+},
+
+Agriculture:{
+icon:"🌾",
+maximum:2000000,
+criteria:[
+"Applicant should have an eligible agricultural activity.",
+"Land ownership or cultivation documents may be required.",
+"Purpose of funding must meet bank guidelines.",
+"Identity and address verification may be required.",
+"Income or agricultural records may be considered.",
+"Final approval depends on bank assessment."
+]
+},
+
+Vehicle:{
+icon:"🚗",
+maximum:2500000,
+criteria:[
+"Vehicle must meet the bank's eligible vehicle category.",
+"Applicant should meet applicable age requirements.",
+"Income or repayment capacity may be considered.",
+"Vehicle quotation or documents may be required.",
+"Identity and address verification may be required.",
+"Final approval depends on the bank."
+]
+},
+
+Business:{
+icon:"🏢",
+maximum:5000000,
+criteria:[
+"Applicant should have an eligible business activity.",
+"Business age and financial records may be considered.",
+"Business registration documents may be required.",
+"Bank statements or financial documents may be required.",
+"Identity and address verification may be required.",
+"Final approval depends on bank assessment."
+]
+},
+
+Gold:{
+icon:"🪙",
+maximum:2000000,
+criteria:[
+"Eligible gold assets may be required.",
+"Ownership verification may be required.",
+"Gold valuation is subject to bank procedures.",
+"Identity and address verification may be required.",
+"Loan-to-value requirements may apply.",
+"Final approval depends on the bank."
+]
+}
+
+};
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentRegion="";
+let currentState="";
+let currentDistrict="";
+
+let selectedBank=null;
+let selectedLoan="";
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+function showPage(id){
+
+document
+.querySelectorAll(".page")
+.forEach(function(page){
+
+page.classList.remove("active");
+
+});
+
+document
+.getElementById(id)
+.classList.add("active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================================
+   STATES
+========================================================= */
+
+function loadStates(){
+
+const region=
+document.getElementById("region").value;
+
+const state=
+document.getElementById("state");
+
+state.innerHTML=
+'<option value="">Select State / UT</option>';
+
+(states[region] || [])
+.forEach(function(item){
+
+state.innerHTML+=
+`<option value="${item}">${item}</option>`;
+
+});
+
+
+document.getElementById(
+"district"
+).innerHTML=
+'<option value="">Select District</option>';
+
+}
+
+
+/* =========================================================
+   DISTRICTS
+========================================================= */
+
+function loadDistricts(){
+
+const state=
+document.getElementById("state").value;
+
+const district=
+document.getElementById("district");
+
+district.innerHTML=
+'<option value="">Select District</option>';
+
+(districts[state] || [])
+.forEach(function(item){
+
+district.innerHTML+=
+`<option value="${item}">${item}</option>`;
+
+});
+
+}
+
+
+/* =========================================================
+   FIND BANKS
+========================================================= */
+
+function findBanks(){
+
+currentRegion=
+document.getElementById("region").value;
+
+currentState=
+document.getElementById("state").value;
+
+currentDistrict=
+document.getElementById("district").value;
+
+
+if(
+!currentRegion ||
+!currentState ||
+!currentDistrict
+){
+
+alert(
+"Please select Region, State and District."
+);
+
+return;
+
+}
+
+
+document.getElementById(
+"locationText"
+).textContent=
+currentDistrict+
+", "+
+currentState+
+", "+
+currentRegion;
+
+
+showPage("categoryPage");
+
+}
+
+
+/* =========================================================
+   BANK LIST
+========================================================= */
+
+function listBanks(type){
+
+const grid=
+document.getElementById("bankGrid");
+
+grid.innerHTML="";
+
+let bankList=[];
+
+
+if(type==="public"){
+
+bankList=banks.slice(0,12);
+
+document.getElementById(
+"bankTitle"
+).textContent=
+"Public Sector Banks";
+
+}
+
+
+else if(type==="private"){
+
+bankList=banks.slice(12);
+
+document.getElementById(
+"bankTitle"
+).textContent=
+"Private Banks";
+
+}
+
+
+else{
+
+document.getElementById(
+"bankTitle"
+).textContent=
+"Regional Rural Banks";
+
+grid.innerHTML=`
+
+<div class="box">
+
+<h2>
+Regional Rural Banks
+</h2>
+
+<p style="color:#666;margin-top:10px;line-height:1.6">
+
+RRB availability depends on the selected
+state and district. Please verify the
+appropriate Regional Rural Bank through
+its official source.
+
+</p>
+
+</div>
+
+`;
+
+showPage("bankListPage");
+
+return;
+
+}
+
+
+bankList.forEach(function(bank){
+
+grid.innerHTML+=`
+
+<div class="bank-card">
+
+<div class="icon">
+🏦
+</div>
+
+<h3>
+${bank.name}
+</h3>
+
+<p>
+Banking Services
+</p>
+
+<button
+class="orange"
+onclick="selectBank('${bank.name}')">
+
+Choose Bank
+
+</button>
+
+</div>
+
+`;
+
+});
+
+
+document.getElementById(
+"bankLocation"
+).textContent=
+currentDistrict+
+", "+
+currentState;
+
+
+showPage("bankListPage");
+
+}
+
+
+/* =========================================================
+   SELECT BANK
+========================================================= */
+
+function selectBank(name){
+
+selectedBank=
+banks.find(function(bank){
+
+return bank.name===name;
+
+});
+
+
+document.getElementById(
+"serviceTitle"
+).textContent=
+selectedBank.name+
+" - Services";
+
+
+showPage("servicesPage");
+
+}
+
+
+/* =========================================================
+   NET BANKING
+========================================================= */
+
+function openNetBanking(){
+
+const grid=
+document.getElementById(
+"netBankingGrid"
+);
+
+grid.innerHTML="";
+
+
+banks.forEach(function(bank){
+
+grid.innerHTML+=`
+
+<div class="card net-card">
+
+<div class="icon">
+🔐
+</div>
+
+<h3>
+${bank.name}
+</h3>
+
+<div class="official-url">
+${bank.url}
+</div>
+
+<button
+class="orange"
+onclick="openOfficial('${bank.url}')">
+
+Open Official Website
+
+</button>
+
+<div class="contact">
+
+<strong>
+Customer Support
+</strong>
+
+<br><br>
+
+${bank.contact}
+
+<br><br>
+
+<button
+class="btn"
+onclick="openOfficial('${bank.contactPage}')">
+
+Official Contact Details
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+showPage("netBankingPage");
+
+}
+
+
+/* =========================================================
+   OFFICIAL WEBSITE
+========================================================= */
+
+function openOfficial(url){
+
+window.open(
+url,
+"_blank",
+"noopener,noreferrer"
+);
+
+}
+
+
+/* =========================================================
+   BANK INFORMATION
+========================================================= */
+
+function showBankInfo(){
+
+if(!selectedBank){
+
+alert(
+"Please select a bank first."
+);
+
+return;
+
+}
+
+
+document.getElementById(
+"bankInfoBox"
+).innerHTML=`
+
+<h2>
+${selectedBank.name}
+</h2>
+
+<br>
+
+<div>
+
+<strong>
+Official Website:
+</strong>
+
+<br>
+
+${selectedBank.url}
+
+</div>
+
+<br>
+
+<div>
+
+<strong>
+Customer Support:
+</strong>
+
+<br>
+
+${selectedBank.contact}
+
+</div>
+
+<br>
+
+<button
+class="btn"
+onclick="openOfficial('${selectedBank.url}')">
+
+Open Official Website
+
+</button>
+
+`;
+
+
+showPage("bankInfoPage");
+
+}
+
+
+/* =========================================================
+   LOAN OPTIONS
+========================================================= */
+
+function openLoans(){
+
+const grid=
+document.getElementById("loanGrid");
+
+grid.innerHTML="";
+
+
+Object.keys(loans)
+.forEach(function(loan){
+
+grid.innerHTML+=`
+
+<div class="card">
+
+<div class="icon">
+${loans[loan].icon}
+</div>
+
+<h2>
+${loan} Loan
+</h2>
+
+<p>
+Compare available indicative rates.
+</p>
+
+<button
+class="btn"
+onclick="compareRates('${loan}')">
+
+View Bank Rates
+
+</button>
+
+</div>
+
+`;
+
+});
+
+
+showPage("loanPage");
+
+}
+
+
+/* =========================================================
+   COMPARE RATES
+========================================================= */
+
+function compareRates(loan){
+
+selectedLoan=loan;
+
+
+document.getElementById(
+"comparisonTitle"
+).textContent=
+loan+
+" Loan - Interest Rate Comparison";
+
+
+const sorted=
+banks
+.map(function(bank){
+
+return{
+bank:bank,
+rate:bank.rates[loan]
+};
+
+})
+.sort(function(a,b){
+
+return a.rate-b.rate;
+
+});
+
+
+const body=
+document.getElementById(
+"rateBody"
+);
+
+body.innerHTML="";
+
+
+sorted.forEach(function(item,index){
+
+body.innerHTML+=`
+
+<tr class="${index===0?"preferred":""}">
+
+<td>
+${index+1}
+</td>
+
+<td>
+<strong>
+${item.bank.name}
+</strong>
+</td>
+
+<td>
+<strong>
+${item.rate.toFixed(2)}%
+</strong>
+</td>
+
+<td>
+
+${
+index===0
+?
+'<span class="badge">PREFERABLE</span>'
+:
+""
+}
+
+</td>
+
+<td>
+
+<button
+class="btn"
+onclick="openOfficial('${item.bank.url}')">
+
+Official Site
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+showPage("comparisonPage");
+
+}
+
+
+/* =========================================================
+   ELIGIBILITY
+========================================================= */
+
+function openEligibility(){
+
+const loan=
+loans[selectedLoan];
+
+
+document.getElementById(
+"eligibilitySubtitle"
+).textContent=
+selectedLoan+
+" Loan | "+
+currentDistrict+
+", "+
+currentState;
+
+
+const criteria=
+document.getElementById(
+"criteriaList"
+);
+
+criteria.innerHTML="";
+
+
+loan.criteria.forEach(function(item){
+
+criteria.innerHTML+=
+`<li>${item}</li>`;
+
+});
+
+
+generateEligibilityQuestions();
+
+showPage("eligibilityPage");
+
+}
+
+
+/* =========================================================
+   ELIGIBILITY QUESTIONS
+========================================================= */
+
+function generateEligibilityQuestions(){
+
+const container=
+document.getElementById(
+"eligibilityQuestions"
+);
+
+container.innerHTML="";
+
+
+addQuestion(
+container,
+"Applicant Type",
+[
+"Student",
+"Working Professional",
+"Business Professional",
+"Farmer / Agriculturist"
+]
+);
+
+
+addQuestion(
+container,
+"Monthly / Regular Income",
+[
+"Below ₹25,000",
+"₹25,000 - ₹50,000",
+"₹50,000 - ₹1,00,000",
+"₹1,00,000 - ₹2,00,000",
+"Above ₹2,00,000"
+]
+);
+
+
+addQuestion(
+container,
+"Credit History",
+[
+"Good",
+"Average",
+"Limited Credit History",
+"Needs Improvement"
+]
+);
+
+
+addQuestion(
+container,
+"Identity Documents",
+[
+"Available",
+"Partially Available",
+"Not Available"
+]
+);
+
+
+addQuestion(
+container,
+"Address Proof",
+[
+"Available",
+"Partially Available",
+"Not Available"
+]
+);
+
+
+if(selectedLoan==="Home"){
+
+addQuestion(
+container,
+"Property Documents",
+[
+"Available",
+"Partially Available",
+"Not Available"
+]
+);
+
+}
+
+
+if(selectedLoan==="Education"){
+
+addQuestion(
+container,
+"Admission Status",
+[
+"Admission Confirmed",
+"Admission Pending"
+]
+);
+
+}
+
+
+if(selectedLoan==="Agriculture"){
+
+addQuestion(
+container,
+"Land Documents",
+[
+"Available",
+"Partially Available",
+"Not Available"
+]
+);
+
+}
+
+
+if(selectedLoan==="Business"){
+
+addQuestion(
+container,
+"Business Registration",
+[
+"Registered",
+"Not Registered",
+"Not Applicable"
+]
+);
+
+}
+
+}
+
+
+/* =========================================================
+   ADD QUESTION
+========================================================= */
+
+function addQuestion(
+container,
+label,
+options
+){
+
+const wrapper=
+document.createElement("div");
+
+const labelElement=
+document.createElement("label");
+
+labelElement.textContent=
+label;
+
+
+const select=
+document.createElement("select");
+
+select.dataset.question=
+label;
+
+
+select.innerHTML=
+`<option value="">Select ${label}</option>`;
+
+
+options.forEach(function(option){
+
+select.innerHTML+=
+`<option>${option}</option>`;
+
+});
+
+
+wrapper.appendChild(labelElement);
+
+wrapper.appendChild(select);
+
+container.appendChild(wrapper);
+
+}
+
+
+/* =========================================================
+   CALCULATE ELIGIBILITY
+========================================================= */
+
+function calculateEligibility(){
+
+const selects=
+document.querySelectorAll(
+"#eligibilityQuestions select"
+);
+
+let score=65;
+
+
+for(
+let select of selects
+){
+
+if(!select.value){
+
+alert(
+"Please answer all eligibility questions."
+);
+
+select.focus();
+
+return;
+
+}
+
+
+if(
+select.value==="Good" ||
+select.value==="Available" ||
+select.value==="Registered" ||
+select.value==="Admission Confirmed" ||
+select.value==="Above ₹1,00,000"
+){
+
+score+=6;
+
+}
+
+
+if(
+select.value==="Needs Improvement" ||
+select.value==="Not Available" ||
+select.value==="Not Registered"
+){
+
+score-=8;
+
+}
+
+}
+
+
+score=
+Math.max(
+0,
+Math.min(
+100,
+score
+)
+);
+
+
+const lowest=
+getLowestRate(selectedLoan);
+
+
+document.getElementById(
+"eligibilityScore"
+).textContent=
+score+
+"%";
+
+
+document.getElementById(
+"resultLoan"
+).textContent=
+selectedLoan+
+" Loan";
+
+
+document.getElementById(
+"resultBank"
+).textContent=
+lowest.bank.name;
+
+
+document.getElementById(
+"resultRate"
+).textContent=
+lowest.rate.toFixed(2)+
+"%";
+
+
+document.getElementById(
+"resultMaximum"
+).textContent=
+formatCurrency(
+loans[selectedLoan].maximum
+);
+
+
+if(score>=75){
+
+document.getElementById(
+"resultHeading"
+).textContent=
+"✅ Good Preliminary Eligibility";
+
+
+document.getElementById(
+"resultMessage"
+).textContent=
+"Your answers indicate a good preliminary profile, subject to bank verification.";
+
+}
+
+else if(score>=55){
+
+document.getElementById(
+"resultHeading"
+).textContent=
+"🟡 Possible Eligibility";
+
+
+document.getElementById(
+"resultMessage"
+).textContent=
+"Your profile may be eligible, subject to additional verification.";
+
+}
+
+else{
+
+document.getElementById(
+"resultHeading"
+).textContent=
+"🔴 More Verification Required";
+
+
+document.getElementById(
+"resultMessage"
+).textContent=
+"Additional verification or documentation may be required.";
+
+}
+
+
+showPage("resultPage");
+
+}
+
+
+/* =========================================================
+   LOWEST RATE
+========================================================= */
+
+function getLowestRate(loan){
+
+return banks
+.map(function(bank){
+
+return{
+bank:bank,
+rate:bank.rates[loan]
+};
+
+})
+.sort(function(a,b){
+
+return a.rate-b.rate;
+
+})[0];
+
+}
+
+
+/* =========================================================
+   REPAYMENT
+========================================================= */
+
+function openRepayment(){
+
+const lowest=
+getLowestRate(selectedLoan);
+
+
+document.getElementById(
+"repaymentSubtitle"
+).textContent=
+selectedLoan+
+" Loan | Preferred Bank: "+
+lowest.bank.name+
+" | Rate: "+
+lowest.rate+
+"%";
+
+
+const today=
+new Date();
+
+const nextMonth=
+new Date(
+today.getFullYear(),
+today.getMonth()+1,
+1
+);
+
+
+document.getElementById(
+"firstPaymentDate"
+).value=
+formatInputDate(nextMonth);
+
+
+document.getElementById(
+"repaymentResult"
+).style.display=
+"none";
+
+
+showPage("repaymentPage");
+
+}
+
+
+/* =========================================================
+   CALCULATE REPAYMENT
+========================================================= */
+
+function calculateRepayment(){
+
+const amount=
+Number(
+document.getElementById(
+"repaymentAmount"
+).value
+);
+
+
+const years=
+Number(
+document.getElementById(
+"repaymentTenure"
+).value
+);
+
+
+const dateValue=
+document.getElementById(
+"firstPaymentDate"
+).value;
+
+
+if(!amount || amount<=0){
+
+alert(
+"Please enter a valid loan amount."
+);
+
+return;
+
+}
+
+
+if(
+amount>
+loans[selectedLoan].maximum
+){
+
+alert(
+"The amount exceeds the maximum displayed loan amount."
+);
+
+return;
+
+}
+
+
+if(!dateValue){
+
+alert(
+"Please select the first payment date."
+);
+
+return;
+
+}
+
+
+const lowest=
+getLowestRate(selectedLoan);
+
+
+const annualRate=
+lowest.rate;
+
+const months=
+years*12;
+
+const monthlyRate=
+annualRate/100/12;
+
+
+let emi;
+
+
+if(monthlyRate===0){
+
+emi=
+amount/months;
+
+}
+
+else{
+
+emi=
+amount*
+monthlyRate*
+Math.pow(
+1+monthlyRate,
+months
+)/
+(
+Math.pow(
+1+monthlyRate,
+months
+)-1
+);
+
+}
+
+
+const totalPayment=
+emi*months;
+
+const totalInterest=
+totalPayment-amount;
+
+
+const firstDate=
+new Date(
+dateValue+
+"T00:00:00"
+);
+
+
+const lastDate=
+addMonths(
+firstDate,
+months-1
+);
+
+
+document.getElementById(
+"summaryAmount"
+).textContent=
+formatCurrency(amount);
+
+
+document.getElementById(
+"summaryAnnualRate"
+).textContent=
+annualRate.toFixed(2)+
+"%";
+
+
+document.getElementById(
+"summaryMonthlyRate"
+).textContent=
+(
+annualRate/12
+).toFixed(3)+
+"%";
+
+
+document.getElementById(
+"summaryEMI"
+).textContent=
+formatCurrency(emi);
+
+
+document.getElementById(
+"summaryPayments"
+).textContent=
+months;
+
+
+document.getElementById(
+"summaryInterest"
+).textContent=
+formatCurrency(totalInterest);
+
+
+document.getElementById(
+"summaryTotal"
+).textContent=
+formatCurrency(totalPayment);
+
+
+document.getElementById(
+"summaryFirstDate"
+).textContent=
+formatDisplayDate(firstDate);
+
+
+document.getElementById(
+"summaryLastDate"
+).textContent=
+formatDisplayDate(lastDate);
+
+
+generateSchedule(
+amount,
+monthlyRate,
+emi,
+months,
+firstDate
+);
+
+
+document.getElementById(
+"repaymentResult"
+).style.display=
+"block";
+
+}
+
+
+/* =========================================================
+   PAYMENT SCHEDULE
+========================================================= */
+
+function generateSchedule(
+principal,
+monthlyRate,
+emi,
+months,
+firstDate
+){
+
+const body=
+document.getElementById(
+"scheduleBody"
+);
+
+body.innerHTML="";
+
+
+let balance=
+principal;
+
+
+for(
+let i=1;
+i<=months;
+i++
+){
+
+const interest=
+balance*
+monthlyRate;
+
+
+let principalPart=
+emi-interest;
+
+
+if(i===months){
+
+principalPart=
+balance;
+
+}
+
+
+balance=
+Math.max(
+0,
+balance-principalPart
+);
+
+
+const paymentDate=
+addMonths(
+firstDate,
+i-1
+);
+
+
+body.innerHTML+=`
+
+<tr>
+
+<td>
+${i}
+</td>
+
+<td>
+${formatDisplayDate(paymentDate)}
+</td>
+
+<td>
+${formatCurrency(
+i===months
+?
+principalPart+interest
+:
+emi
+)}
+</td>
+
+<td>
+${formatCurrency(interest)}
+</td>
+
+<td>
+${formatCurrency(principalPart)}
+</td>
+
+<td>
+${formatCurrency(balance)}
+</td>
+
+</tr>
+
+`;
+
+}
+
+}
+
+
+/* =========================================================
+   APPLICATION
+========================================================= */
+
+function openApplication(){
+
+const lowest=
+getLowestRate(selectedLoan);
+
+
+document.getElementById(
+"applicationSummary"
+).innerHTML=`
+
+<strong>
+Loan:
+</strong>
+
+${selectedLoan} Loan
+
+<br>
+
+<strong>
+Preferred Bank:
+</strong>
+
+${lowest.bank.name}
+
+<br>
+
+<strong>
+Lowest Indicative Interest Rate:
+</strong>
+
+${lowest.rate.toFixed(2)}%
+
+<br>
+
+<strong>
+Location:
+</strong>
+
+${currentDistrict},
+${currentState}
+
+<br>
+
+<strong>
+Maximum Indicative Loan Amount:
+</strong>
+
+${formatCurrency(
+loans[selectedLoan].maximum
+)}
+
+`;
+
+
+document.getElementById(
+"applicationState"
+).value=
+currentState;
+
+
+document.getElementById(
+"applicationDistrict"
+).value=
+currentDistrict;
+
+
+showPage("applicationPage");
+
+}
+
+
+/* =========================================================
+   SUBMIT APPLICATION
+========================================================= */
+
+function submitApplication(){
+
+const name=
+document.getElementById(
+"fullName"
+).value.trim();
+
+
+const mobile=
+document.getElementById(
+"mobileNumber"
+).value.trim();
+
+
+const email=
+document.getElementById(
+"emailAddress"
+).value.trim();
+
+
+const dob=
+document.getElementById(
+"dob"
+).value;
+
+
+const amount=
+Number(
+document.getElementById(
+"loanAmount"
+).value
+);
+
+
+const address=
+document.getElementById(
+"address"
+).value.trim();
+
+
+const agreement=
+document.getElementById(
+"applicationAgreement"
+).checked;
+
+
+if(
+!name ||
+!mobile ||
+!email ||
+!dob ||
+!amount ||
+!address
+){
+
+alert(
+"Please complete all required fields."
+);
+
+return;
+
+}
+
+
+if(
+!/^[0-9]{10}$/.test(mobile)
+){
+
+alert(
+"Please enter a valid 10-digit mobile number."
+);
+
+return;
+
+}
+
+
+if(
+amount>
+loans[selectedLoan].maximum
+){
+
+alert(
+"Requested amount exceeds the displayed maximum."
+);
+
+return;
+
+}
+
+
+if(!agreement){
+
+alert(
+"Please accept the application notice."
+);
+
+return;
+
+}
+
+
+/* Generate application reference */
+
+const reference=
+"BBI-"+
+Date.now()
+.toString()
+.slice(-8);
+
+
+document.getElementById(
+"applicationReference"
+).textContent=
+reference;
+
+
+/* Clear form after submission */
+
+document.getElementById(
+"fullName"
+).value="";
+
+
+document.getElementById(
+"mobileNumber"
+).value="";
+
+
+document.getElementById(
+"emailAddress"
+).value="";
+
+
+document.getElementById(
+"dob"
+).value="";
+
+
+document.getElementById(
+"loanAmount"
+).value="";
+
+
+document.getElementById(
+"address"
+).value="";
+
+
+document.getElementById(
+"applicationAgreement"
+).checked=false;
+
+
+/* Show THANK YOU page */
+
+showPage("successPage");
+
+}
+
+
+/* =========================================================
+   DATE FUNCTIONS
+========================================================= */
+
+function formatInputDate(date){
+
+return date.getFullYear()+
+"-"+
+String(
+date.getMonth()+1
+).padStart(2,"0")+
+"-"+
+String(
+date.getDate()
+).padStart(2,"0");
+
+}
+
+
+function formatDisplayDate(date){
+
+return date.toLocaleDateString(
+"en-IN",
+{
+day:"2-digit",
+month:"long",
+year:"numeric"
+}
+);
+
+}
+
+
+function addMonths(date,months){
+
+const result=
+new Date(date);
+
+result.setMonth(
+result.getMonth()+months
+);
+
+return result;
+
+}
+
+
+/* =========================================================
+   CURRENCY
+========================================================= */
+
+function formatCurrency(amount){
+
+return new Intl.NumberFormat(
+"en-IN",
+{
+style:"currency",
+currency:"INR",
+maximumFractionDigits:0
+}
+).format(amount);
+
+}
+
+</script>
+
+</body>
+</html>
